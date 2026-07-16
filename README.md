@@ -17,9 +17,10 @@ Per-app and per-website screen time tracking for KDE Plasma (Wayland), with a CL
 - If KWin restarts, the daemon re-injects the tracker script automatically.
 - History is kept forever (the DB grows by a few KB per day).
 
-Requires KDE Plasma 6 on Wayland — the daemon talks to KWin's scripting
-interface, so other compositors (Hyprland, Sway, GNOME) would need their own
-tracking backend.
+Requires KDE Plasma 6 — the daemon talks to KWin's scripting interface, so
+other compositors and desktops (Hyprland, Sway, GNOME) would need their own
+tracking backend. Built for Wayland; a Plasma 6 X11 session should also work
+unchanged (same KWin D-Bus API), though that's untested.
 
 ## Install
 
