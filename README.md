@@ -33,6 +33,32 @@ systemctl --user enable --now waytime
 This installs `waytime` (CLI) and `waytime-daemon` to `/usr/bin`, and the
 user service to `/usr/lib/systemd/user/waytime.service`.
 
+### Other distros (Kubuntu, Fedora KDE, openSUSE, …)
+
+Any distro running KDE Plasma 6 on Wayland works. First make sure the two
+Python D-Bus libraries are installed (they usually already are on KDE):
+
+```
+sudo apt install python3-dbus python3-gi     # Debian/Ubuntu/Kubuntu
+sudo dnf install python3-dbus python3-gobject   # Fedora
+sudo zypper install python3-dbus-python python3-gobject   # openSUSE
+```
+
+Then install to your user account (no root needed):
+
+```
+git clone https://github.com/ieatfood314/waytime.git
+cd waytime
+mkdir -p ~/.local/bin ~/.config/systemd/user
+install -m755 waytime waytime-daemon ~/.local/bin/
+sed "s|/usr/bin/waytime-daemon|$HOME/.local/bin/waytime-daemon|" waytime.service > ~/.config/systemd/user/waytime.service
+systemctl --user daemon-reload
+systemctl --user enable --now waytime
+```
+
+Make sure `~/.local/bin` is on your `PATH`. To uninstall:
+`systemctl --user disable --now waytime`, then delete the three installed files.
+
 ## Usage
 
 ```
