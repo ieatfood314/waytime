@@ -78,3 +78,9 @@ systemctl --user status waytime     # check the daemon
 journalctl --user -u waytime -f     # follow its logs
 systemctl --user restart waytime    # restart after an update
 ```
+
+## Disclaimer
+
+🤖 This project was vibe coded with Claude (Fable 5) — a human chose what to
+build and verified it works; the AI wrote the code. Read it before you run it,
+as you should with any stranger's daemon.
